@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Il2CppPlugin</RootNamespace>
+    <AssemblyName>Il2CppPlugin</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Platforms>x64;x86</Platforms>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <NoWarn>$(NoWarn);CA1416;WFO1000</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Platform)' == 'x64' ">
+    <DefineConstants>$(DefineConstants);RECLASSNET64;WIN64</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <DefineConstants>$(DefineConstants);RECLASSNET32;WIN32</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- ReClass.NET is expected as a sibling checkout: ..\ReClass.NET\ReClass.NET\ReClass.NET.csproj -->
+    <ProjectReference Include="..\ReClass.NET\ReClass.NET\ReClass.NET.csproj" Private="false" />
+  </ItemGroup>
+
+</Project>
